@@ -1,20 +1,20 @@
-# hyperbeam
+# dCast
 
-A 1-1 end-to-end encrypted internet pipe powered by [Hyperswarm](https://github.com/hyperswarm/hyperswarm) and Noise
+A 1-1 end-to-end encrypted internet pipe powered by [dSwarm](https://github.com/hyperswarm) and Noise
 
 ```
-npm install hyperbeam
+npm install dcast
 ```
 
 ## Usage
 
 ``` js
-const Hyperbeam = require('hyperbeam')
+const DCast = require('dcast')
 
-// 'from mafintosh' should be a somewhat unique topic used to derive a discovery key.
+// 'from satoshi' should be a somewhat unique topic used to derive a discovery key.
 // to find the other side of your pipe. it's seemed with a determistic timestamp from ~+-30min for better privacy
 // once the other peer is discovered it is used to derive a noise keypair as well.
-const beam = new Hyperbeam('from mafintosh')
+const beam = new DCast('from satoshi')
 
 // make a little chat app
 process.stdin.pipe(beam).pipe(process.stdout)
@@ -22,36 +22,36 @@ process.stdin.pipe(beam).pipe(process.stdout)
 
 ## CLI
 
-Part of the [Hyperspace CLI, hyp](https://github.com/hypercore-protocol/cli)
+Part of the [dHub CLI](https://github.com/protocol/cli)
 
 Provided here as a standalone CLI as well.
 
 First install it
 
 ```sh
-npm install -g hyperbeam
+npm install -g dcast
 ```
 
 Then on one machine run
 
 ```sh
-echo 'hello world' | hyperbeam 'some topic'
+echo 'hello world' | dcast 'some topic'
 ```
 
 Then on another
 
 ```sh
 # will print "hello world"
-hyperbeam 'some topic'
+dcast 'some topic'
 ```
 
 That's it! Happy piping.
 
 ## API
 
-#### `const stream = new Hyperbeam(key)`
+#### `const stream = new DCast(key)`
 
-Make a new Hyperbeam duplex stream.
+Make a new DCast duplex stream.
 
 Will auto connect to another peer making using the same key within ~30 min with an end to end encrypted tunnel.
 
