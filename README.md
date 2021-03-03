@@ -1,6 +1,6 @@
 # dCast
 
-A 1-1 end-to-end encrypted internet pipe powered by [dSwarm](https://github.com/hyperswarm) and Noise
+A 1-1 end-to-end encrypted internet pipe powered by [dSwarm](https://github.com/dwebprotocol/dswarm) and Noise
 
 ```
 npm install dcast
@@ -22,7 +22,7 @@ process.stdin.pipe(beam).pipe(process.stdout)
 
 ## CLI
 
-Part of the [dHub CLI](https://github.com/protocol/cli)
+Part of the [dHub CLI](https://github.com/dwebprotocol/dswarm-cli)
 
 Provided here as a standalone CLI as well.
 
