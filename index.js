@@ -1,12 +1,12 @@
 const { Duplex } = require('streamx')
 const sodium = require('sodium-native')
-const hyperswarm = require('hyperswarm')
+const dswarm = require('dswarm')
 const noise = require('noise-peer')
 
 const MAX_DRIFT = 60e3 * 30 // thirty min
 const KEY_DRIFT = 60e3 * 2 // two min
 
-module.exports = class Hyperbeam extends Duplex {
+module.exports = class DCast extends Duplex {
   constructor (key) {
     super()
 
@@ -72,7 +72,7 @@ module.exports = class Hyperbeam extends Duplex {
     const [a, b] = this._dkeys()
 
     this._onopen = cb
-    this._swarm = hyperswarm({ preferredPort: 49737, ephemeral: true, queue: { multiplex: true } })
+    this._swarm = dswarm({ preferredPort: 49737, ephemeral: true, queue: { multiplex: true } })
 
     this._swarm.on('listening', () => {
       this._swarm.network.discovery.dht.on('initial-nodes', () => {
